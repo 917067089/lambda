@@ -1,5 +1,7 @@
 package com.imooc.proxy.one;
 
+import com.imooc.util.DBUtil;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -59,8 +61,7 @@ public class RealITem implements IITem {
     public void itemFill() throws Exception {//填充项目content及plan字段
         //第2级查询sql语句
         String strSql ="select content,plan from projecttemp where account='"+account+"'";
-        DbProc dbobj = new DbProc();
-        Connection connection = dbobj.connect();
+        Connection connection = DBUtil.getConnection();
         Statement stm = connection.createStatement();
         ResultSet rst = stm.executeQuery(strSql);
         rst.next();
