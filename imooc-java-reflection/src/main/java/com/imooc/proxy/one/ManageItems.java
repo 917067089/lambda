@@ -1,5 +1,7 @@
 package com.imooc.proxy.one;
 
+import com.imooc.util.DBUtil;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -13,14 +15,13 @@ public class ManageItems {
     Vector<Proxyitem> v = new Vector();//代理项目集合
     public void firstSearch()throws Exception{
         //第2级查询sql语句
-        String strSql ="select content,plan from project";//第一级查询sql语句
-        DbProc dbobj = new DbProc();
-        Connection connection = dbobj.connect();
+        String strSql ="select account,name,project from projecttemp";//第一级查询sql语句
+        Connection connection = DBUtil.getConnection();
         Statement stm = connection.createStatement();
         ResultSet rst = stm.executeQuery(strSql);//获得一级查询记录集合
         while (rst.next()){
             Proxyitem obj = new Proxyitem(new RealITem());
-            obj.setAccount(rst.getString("acount"));
+            obj.setAccount(rst.getString("account"));
             obj.setName(rst.getString("name"));
             obj.setProject(rst.getString("project"));
             v.add(obj);

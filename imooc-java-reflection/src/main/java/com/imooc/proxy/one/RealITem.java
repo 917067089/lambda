@@ -58,7 +58,7 @@ public class RealITem implements IITem {
     @Override
     public void itemFill() throws Exception {//填充项目content及plan字段
         //第2级查询sql语句
-        String strSql ="select content,plan from project where account='"+account+"'";
+        String strSql ="select content,plan from projecttemp where account='"+account+"'";
         DbProc dbobj = new DbProc();
         Connection connection = dbobj.connect();
         Statement stm = connection.createStatement();

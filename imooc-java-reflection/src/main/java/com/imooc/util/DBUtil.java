@@ -1,5 +1,6 @@
 package com.imooc.util;
 
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -16,8 +17,7 @@ public class DBUtil {
 	static {
 		try {
 			// 加载配置文件
-			properties.load(DBUtil.class.getClassLoader().getResourceAsStream(
-					"db.properties"));
+			properties.load(new FileInputStream("D:\\IdeaWorkspace\\lambda\\imooc-java-reflection\\src\\main\\resouce\\db.properties"));
 			DRIVER = properties.getProperty("jdbc.driver");
 			URL = properties.getProperty("jdbc.url");
 			USER = properties.getProperty("jdbc.user");
@@ -46,9 +46,9 @@ public class DBUtil {
 	public static void main(String[] args) throws Exception {
 		Connection con = DBUtil.getConnection();
 		Statement state = con.createStatement();
-		ResultSet rs = state.executeQuery("select user_name,age from imooc_goddess");
+		ResultSet rs = state.executeQuery("select * from account");
 		while (rs.next()){
-            System.out.println(rs.getString("user_name")+":"+ rs.getInt("age") );
+            System.out.println(rs.getDouble("amount") );
         }
 	}
 }

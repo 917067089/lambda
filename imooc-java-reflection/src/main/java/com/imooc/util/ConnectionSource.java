@@ -1,5 +1,6 @@
 package com.imooc.util;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -37,7 +38,8 @@ public class ConnectionSource {
 		Properties dbProps = new Properties();//这个是第二种的单利模式中的懒汉模式
 		//去配置文件
 		try {
-			dbProps.load(ConnectionSource.class.getClassLoader().getResourceAsStream(CONFIGFILE));
+			dbProps.load(new FileInputStream(CONFIGFILE));
+//			dbProps.load(ConnectionSource.class.getClassLoader().getResourceAsStream(CONFIGFILE));
 			String drive = dbProps.getProperty("jdbc.driver");
 			String url = dbProps.getProperty("jdbc.url");
             String username = dbProps.getProperty("jdbc.user");
