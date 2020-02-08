@@ -1,0 +1,99 @@
+什么是Lambda
+    Lambda概述
+        什么是Lambda
+            -Lambda 表达式也被称为箭头函数、匿名函数、闭包
+            -lambda表达式现在是轻量及函数式编程思想
+            -‘->' 符号Lambda表达式核心操作符号，符号左侧是操作参数，符号右侧是操作表达式。
+            -jdk8 新特性
+    MCAD模式
+         Model code as data
+            -Model code as data 编码及数据，尽可能轻量级的将代码封装为数据。
+            -解决方案：接口&实现类（匿名内部类）
+            -存在问题：语法沉余、this关键字、变量捕获、数据控制等。
+    问题及优化
+         功能接口设计及优化
+            -需求环境：线程类的创建
+            -解决方案：匿名内部类实现
+            -解决方案：lambda 表达式实现
+    为什么要用Lamdba
+          为什么要使用lambda表达式
+            -它不是解决未知问题的新技术
+            -对现有解决方案的语义优化
+            -需要根据实际需求考虑性能问题
+Lambda的基础
+    函数式接口
+        函数式接口（function interface）
+            -函数式接口，就是java类型系统中的接口
+            -函数式接口，是只包含一个接口方法的特殊接口
+            -语义检测注解：@FunctionInterface
+            -函数式接口：只包含一个操作方法
+            -Lambda表达式，只能操作一个方法
+            -java中Lambda表达式，核心就是一个函数式接口的实现
+    常见的函数接口
+        -默认接口方法
+        -静态接口方法
+        静态式接口和默认接口对我们函数式接口的语音语法不会产受任何影响
+        -来自Object集成的方法 所有的类都直接和间接集成Obejct
+            在接口中定义了一个自己的接口，就会报错，但是使用默认的就不会报错 toString();
+
+        -java 类型系统内建函数式接口
+            -java.lang.Runable
+            -java.lang.Comparable
+            -java.lang.Comparator
+            -java.ia.FileFilter0
+            -jdk8 提供了java.utii.function包，提供了常用的函数式功能接口
+                -java.util.funciton.Predicate<T>
+                    -接收参数对象T,返回一个boolean类型结果
+                -java.util.function.Comsumer<T>
+                    -接收参数对象T,不返回结果
+                -java.util.function.Function<T,R>
+                    -接收参数对象T,返回结果对象R
+                -java.util.function.Supplier<T>
+                    -不接收参数，提供T对象的创建工厂
+                -java.util.function.UnaryOperator<T>
+                    -接收参数对象T,返回结果对象T
+                -java.util.function.BinaryOperator<T>
+                    -接收两个T对象,返回一个T对象结果
+    Lambda基本语法
+        -Lambda 表达式基本语法
+        -带参数的Lambda表达式
+        -带返回值的Lambda表达式
+    变量捕获、
+        -匿名内部类中变量捕获
+        -lambda表达式中变量捕获
+    枚举检查
+    Lambda表达式类型检查
+       Lambda表达式类型检查lambda是一种简单的语法，是函数式接口的一种实现，对于语法相同的lambda的表达式，jvm在运行的过程中，在底层通过解释及重构，进行类型自动推导，在表现的代码中，就是表达式的类型检查
+       表达式类型检查
+       参数类型检查
+
+      方法重载的问题
+        -java 类型系统中的方法重载
+        -方法重载的实现
+        -当方法重载遇上Lambda表达式
+    Lamdba运行原理
+        -lambda 表达式底层解析运行原理
+        -lambda表达式在jvm底层解析成静态方法和匿名内部类型
+        -通过实现接口的匿名内部类型中接口发方法调用静态实现方法，完成lambda表达式的运行
+Lambdba高级
+    方法引用
+        -方法引用是结合lambda表达式的一种语法特性
+        -静态方法应用
+        -实例方法引用
+        -构造方法引用
+
+    Stream 的概述
+               和数据算法有关的，jdk1.8对数据流的引入，是针对多个数据，容器、集合，等存储批量数据的聚合操作，复杂、冗余流程，提出一套新的api ,结合lambda，通过串行、并行 ，两种方式，完成对批量数据的操作
+    Stream API
+        -Stream聚合操作
+        -api:intermediate 中间、记录操作[无状态|有状态]
+        -api:terminal 终结、结束操作【短路|非短路】
+        Stream的作用
+    集合元素操作
+        -类型装换：其他类型（创建、获取）-> stream 对象
+        -类型装换： Stream类型 -> 其他类型
+        -Stream常见的API操作
+    实际需求重构
+    线程安全与性能
+
+

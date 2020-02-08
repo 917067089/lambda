@@ -1,0 +1,5 @@
+url=jdbc:mysql://localhost:3306/mydb
+username=root
+password=123456
+plusurl=plus,com.imooc.singleton.PlusFunc
+minusurl=minus,com.imooc.singleton.MinusFunc
